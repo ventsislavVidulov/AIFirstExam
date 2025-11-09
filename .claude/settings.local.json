@@ -3,7 +3,11 @@
     "allow": [
       "Bash(npm run dev:*)",
       "Bash(timeout:*)",
-      "Bash(echo \"\n\n---\n\n## PROJECT COMPLETE ✅\n\n**Final Status:** All tasks completed successfully\n\n**Application Status:**\n- Running on: http://localhost:5174/\n- All features working\n- 0 vulnerabilities\n- Complete documentation\n\n**Deliverables:**\n✅ Working SmartBudget application\n✅ Complete BMAD methodology documentation\n✅ Product Brief\n✅ Security guidelines (customSettings.md)\n✅ Complete prompt history (prompts.md)\n✅ Project summary (summary.md)\n✅ Comprehensive README\n✅ Clean Git history with 9 commits\n\n**Project ready for GitHub upload and submission!**\n\")"
+      "Bash(echo \"\n\n---\n\n## PROJECT COMPLETE ✅\n\n**Final Status:** All tasks completed successfully\n\n**Application Status:**\n- Running on: http://localhost:5174/\n- All features working\n- 0 vulnerabilities\n- Complete documentation\n\n**Deliverables:**\n✅ Working SmartBudget application\n✅ Complete BMAD methodology documentation\n✅ Product Brief\n✅ Security guidelines (customSettings.md)\n✅ Complete prompt history (prompts.md)\n✅ Project summary (summary.md)\n✅ Comprehensive README\n✅ Clean Git history with 9 commits\n\n**Project ready for GitHub upload and submission!**\n\")",
+      "Bash(echo:*)",
+      "Bash(if not exist \"c:\\Users\\Xcen3\\Desktop\\AI\\AIFirstExam\\docs\\PRD\" mkdir \"c:\\Users\\Xcen3\\Desktop\\AI\\AIFirstExam\\docs\\PRD\")",
+      "SlashCommand(/bmad:bmm:agents:architect)",
+      "Bash(test:*)"
     ],
     "deny": [],
     "ask": []
