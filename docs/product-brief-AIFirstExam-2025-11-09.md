@@ -191,7 +191,7 @@ The MVP is successful if it:
 **Frontend Stack**:
 - **Framework**: React.js 18+ for component-based UI development
 - **Build Tool**: Vite for fast development and optimized production builds
-- **Styling**: Tailwind CSS for utility-first responsive design
+- **Styling**: MUI with utility-first responsive design
 - **Charts**: Chart.js with react-chartjs-2 for data visualization
 - **State Management**: React Context API (sufficient complexity for MVP)
 - **Date Handling**: date-fns for date manipulation and formatting
