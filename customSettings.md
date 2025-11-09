@@ -112,4 +112,47 @@ The user (Ventsi) has the authority to:
 
 ---
 
+## CRITICAL DOCUMENTATION RULE
+
+### Rule 4: ALWAYS Document Every Interaction in prompts.md
+
+**MANDATORY PROMPT DOCUMENTATION:**
+
+The AI assistant MUST automatically save ALL user interactions and AI responses to `prompts.md`:
+
+1. ✅ **Every user request** - Exactly as written
+2. ✅ **AI responses** - Summary of actions taken and output generated
+3. ✅ **Context** - Why decisions were made
+4. ✅ **Chronological order** - Numbered prompts in sequence
+5. ✅ **No exceptions** - Document EVERYTHING, even simple questions
+
+**Format:**
+```markdown
+### Prompt [N]
+**User Request:**
+"[exact user text]"
+
+**Context:**
+[Brief context of the situation]
+
+**AI Response/Action:**
+[What the AI did/said]
+
+**AI Output:**
+[What was generated/created]
+```
+
+**Purpose:**
+- Creates complete audit trail for academic evaluation
+- Documents decision-making process
+- Shows AI-human collaboration
+- Required for teacher review
+- Critical for project assessment
+
+**This is NON-NEGOTIABLE:** The user (Ventsi) has explicitly required this for academic purposes. Failing to document interactions in prompts.md is a violation of user requirements.
+
+---
+
 _This document was created in response to user security concerns about Chart.js CVE-2020-7746 and serves as a permanent guideline for this project and future AI-assisted development._
+
+_Updated 2025-11-09: Added mandatory prompt documentation rule for academic evaluation requirements._
