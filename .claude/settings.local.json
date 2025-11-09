@@ -4,7 +4,8 @@
       "Bash(git init:*)",
       "Bash(git add:*)",
       "Bash(git commit:*)",
-      "Bash(npx bmad-method@alpha install:*)"
+      "Bash(npx bmad-method@alpha install:*)",
+      "Bash(if not exist \"c:\\Users\\Xcen3\\Desktop\\AI\\AIFirstExam\\docs\" mkdir \"c:\\Users\\Xcen3\\Desktop\\AI\\AIFirstExam\\docs\")"
     ],
     "deny": [],
     "ask": []
