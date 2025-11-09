@@ -60,6 +60,7 @@ SmartBudget helps users track income and expenses, categorize transactions, and 
 AIFirstExam/
 ├── bmad/                      # BMAD methodology files
 ├── docs/                      # Project documentation
+│   ├── PRD/                   # Product Requirements Document (9 files)
 │   └── product-brief-*.md     # Product Brief document
 ├── smartbudget/               # React application
 │   ├── src/
@@ -206,10 +207,16 @@ This project implements security best practices:
 ## Documentation
 
 - **[BMAD.md](BMAD.md)** - Complete BMAD methodology documentation covering all 4 phases
-- **[prompts.md](prompts.md)** - Chronological record of all AI interactions
+- **[docs/PRD/](docs/PRD/)** - **Comprehensive Product Requirements Document (PRD)**
+  - 9 organized documents (~16,700 words)
+  - Vision alignment, success criteria, scope definition
+  - 20 functional requirements + 18 non-functional requirements
+  - UX principles, project specifications, and executive summary
+  - Created retrospectively using BMAD PRD workflow for educational purposes
+- **[prompts.md](prompts.md)** - Chronological record of all AI interactions (29 prompts)
 - **[summary.md](summary.md)** - Project summary and AI usage analysis
 - **[customSettings.md](customSettings.md)** - AI security guidelines and rules
-- **[docs/product-brief-*.md](docs/)** - Detailed product requirements and vision
+- **[docs/product-brief-*.md](docs/)** - Initial product requirements and vision
 
 ## Git Workflow
 

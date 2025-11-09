@@ -616,3 +616,17 @@ User selected option 2: Commit PRD to Git. Retrospective PRD documentation (9 fi
 
 **AI Action:**
 Committing PRD documents to Git with conventional commit message format and BMAD co-authorship.
+
+
+### Prompt 29
+**User Request:**
+"3, then swich to bmad arhitect"
+
+**Context:**
+User wants to add README section linking to PRD documentation, then explore the BMAD Architect agent for educational purposes.
+
+**AI Action:**
+1. Reading current README.md
+2. Adding PRD section with link to docs/PRD/
+3. Committing README update
+4. Switching to BMAD Architect agent for architectural review
