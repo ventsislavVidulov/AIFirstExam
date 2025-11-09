@@ -55,3 +55,52 @@ The BMAD installation requires interactive input, so user will install it manual
 
 **AI Action:**
 Updating prompts.md file to document all conversation history in chronological order.
+
+---
+
+### Prompt 4
+**User Request:**
+Question about BMAD module selection:
+- "? Select modules to install: what is the most appropriate case for my project"
+- "also i think in bmad v4 there was not this option selection flow, what was used there"
+
+**AI Response:**
+Recommended selecting **BMM: BMad Method Agile-AI Driven-Development** because:
+- Project requirement specifically asks to apply BMAD methodology
+- BMM focuses on Agile-AI Driven Development workflow (Analysis → Planning → Solutioning → Implementation)
+- Designed for structured software development projects
+
+**Explanation of BMAD versions:**
+- BMAD v4: Simpler installation, auto-installed everything without module selection
+- BMAD v6.0.0-alpha: Modular approach with selective installation:
+  - BMB = Building custom tools
+  - BMGD = Game development tools
+  - BMM = Core BMAD methodology (needed for this project)
+  - CIS = Creative/innovation tools
+
+---
+
+### Prompt 5
+**User Request:**
+"where we save the prompts, do i need to tell you every time where to put it, or you may save some kind of instruction for you to put every prompt in prompt.md, it is important for me and my teachers"
+
+**AI Action:**
+Acknowledged the importance of consistently updating prompts.md after every interaction.
+
+**AI Commitment:**
+Will automatically update prompts.md with every user interaction and AI response going forward without needing reminders. This is critical for project documentation and evaluation by teachers.
+
+---
+
+### Prompt 6
+**User Request:**
+"do i need this ? Enable Playwright MCP capabilities (healing, exploratory, verification)? (y/N)"
+
+**AI Response:**
+Recommended selecting **N** (No) because:
+- Playwright is for automated browser testing and E2E test automation
+- SmartBudget project doesn't require automated testing infrastructure
+- Project requirements focus on building the app with BMAD methodology, not automated testing
+- Playwright is only needed for complex testing workflows or if teachers specifically require E2E tests
+
+**Decision:** Skip Playwright MCP for this project.
