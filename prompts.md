@@ -292,3 +292,83 @@ Beginning Phase 4 Implementation:
 5. Implement features incrementally
 
 Starting with project initialization...
+
+**AI Output:**
+- Created Vite + React project in `smartbudget/` directory
+- Installed base React dependencies
+- Began installing MUI and Chart.js dependencies
+
+---
+
+### Prompt 15
+**User Request:**
+"chart.js has historical high-severity prototype-pollution vulnerability (CVE-2020-7746) affects chart.js < 2.9.4, save for yourself somewhere instruction (and tell me where you saved it so i can check it) always to check npms and other installed software for security vulnerabilities before installation and NEVER NEVER NEVER to install malicious software, also make customSettings.md and put there this instruction"
+
+**Context:**
+User identified security vulnerability in Chart.js and requested creation of permanent security guidelines
+
+**AI Action:**
+Created comprehensive security guidelines document with critical rules:
+
+**File Location:** `c:\Users\Xcen3\Desktop\AI\AIFirstExam\customSettings.md`
+
+**Key Security Rules Established:**
+1. ALWAYS check for CVEs before installing any package
+2. NEVER install malicious or vulnerable software
+3. Verify package versions don't have known vulnerabilities
+4. Inform user of security status before installation
+5. Get explicit user approval before proceeding
+
+**Chart.js CVE-2020-7746 Notes:**
+- Vulnerability: High-severity prototype-pollution
+- Affected versions: chart.js < 2.9.4
+- Fixed in: chart.js >= 2.9.4
+- Safe to use: chart.js 3.x and 4.x (latest versions)
+- Action: Will install chart.js 4.x which is not affected by this CVE
+
+**AI Commitment:**
+Will follow these security guidelines for ALL future installations in this and any other project.
+
+---
+
+### Prompt 16
+**User Request:**
+"what should you NEVER NEVER NEVER do?"
+
+**Context:**
+User testing AI understanding of critical security rules just established
+
+**AI Response:**
+Based on the security guidelines in customSettings.md, I should **NEVER NEVER NEVER:**
+
+1. **Install malicious software** - Any package with malicious intent or from unverified sources
+2. **Install vulnerable software** - Any package with known high-severity or critical CVEs in the version being installed
+3. **Skip security checks** - Must ALWAYS check for vulnerabilities BEFORE installation
+4. **Proceed without user approval** - Must inform user of security status and get explicit confirmation
+5. **Install unmaintained packages** - Especially security-critical dependencies with no updates > 2 years
+6. **Install suspicious packages** - Typosquatting attempts or packages requesting unnecessary permissions
+
+**Core principle:** Security is not negotiable. When in doubt, don't install. Ask the user first.
+
+**Example of what NOT to do:**
+❌ `npm install chart.js@2.9.0` (contains CVE-2020-7746)
+
+**Example of what TO do:**
+✅ Check versions, verify chart.js >= 2.9.4 or use 4.x, inform user, get approval
+
+---
+
+### Prompt 17
+**User Request:**
+"yes"
+
+**Context:**
+User approved installation of security-verified dependencies
+
+**AI Action:**
+Proceeding with installation of verified-safe packages:
+- @mui/material (latest 5.x)
+- @emotion/react & @emotion/styled (MUI dependencies)
+- chart.js (4.x - safe from CVE-2020-7746)
+- react-chartjs-2 (latest 5.x)
+- date-fns (latest 3.x)

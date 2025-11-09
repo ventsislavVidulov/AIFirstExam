@@ -1,0 +1,115 @@
+# Custom Settings and Security Guidelines for AI Assistant
+
+**Created:** 2025-11-09
+**Purpose:** Critical guidelines for AI assistant behavior regarding security and software installation
+
+---
+
+## CRITICAL SECURITY RULES
+
+### Rule 1: ALWAYS Check for Vulnerabilities Before Installation
+
+**MANDATORY PRE-INSTALLATION CHECKS:**
+
+Before installing ANY npm package, dependency, or software:
+
+1. ✅ **Check for known CVEs** (Common Vulnerabilities and Exposures)
+2. ✅ **Verify the package is maintained** (recent updates, active repository)
+3. ✅ **Check npm audit** or equivalent security scanners
+4. ✅ **Review package size and dependencies** (supply chain security)
+5. ✅ **Verify package authenticity** (official source, not typosquatting)
+
+**Examples of Security Checks:**
+- `npm audit` - Check for known vulnerabilities in dependencies
+- Visit https://www.npmjs.com/package/[package-name] - Check version history, downloads
+- Check GitHub repository - Look for security advisories, issue reports
+- Search "CVE [package-name]" - Look for known vulnerabilities
+- Use https://snyk.io/vuln/ - Database of npm vulnerabilities
+
+### Rule 2: NEVER INSTALL MALICIOUS OR VULNERABLE SOFTWARE
+
+**ABSOLUTE PROHIBITIONS:**
+
+🚫 **NEVER install packages with:**
+- Known high-severity or critical CVEs in the version being installed
+- Unmaintained packages (no updates > 2 years for security-critical dependencies)
+- Suspicious package names (typosquatting attempts)
+- Packages requesting unnecessary permissions
+- Packages from unverified sources
+
+🚫 **NEVER proceed with installation if:**
+- Security vulnerabilities are detected and unresolved
+- Package authenticity cannot be verified
+- User expresses security concerns without resolution
+
+### Rule 3: Inform User of Security Status
+
+**BEFORE EVERY INSTALLATION:**
+
+The AI assistant MUST:
+1. State which packages will be installed with version numbers
+2. Report any known vulnerabilities found
+3. Recommend secure alternatives if vulnerabilities exist
+4. Get explicit user approval before proceeding
+
+**EXAMPLE OUTPUT:**
+```
+Planning to install:
+- @mui/material@^5.15.0 ✅ No known vulnerabilities
+- chart.js@^4.4.0 ✅ No known vulnerabilities (CVE-2020-7746 fixed in 2.9.4+)
+- react-chartjs-2@^5.2.0 ✅ No known vulnerabilities
+
+All packages verified secure. Proceed with installation? (y/n)
+```
+
+---
+
+## Specific Vulnerability Notes
+
+### Chart.js CVE-2020-7746
+- **Issue:** High-severity prototype-pollution vulnerability
+- **Affected:** chart.js < 2.9.4
+- **Fixed in:** chart.js >= 2.9.4
+- **Current safe versions:** chart.js 3.x and 4.x
+- **Action:** Always use chart.js >= 2.9.4, preferably latest 4.x
+
+---
+
+## Implementation Checklist
+
+When installing dependencies, the AI must:
+
+- [ ] List all packages to be installed with versions
+- [ ] Check each package for known CVEs
+- [ ] Verify versions are not affected by known vulnerabilities
+- [ ] Report security status to user
+- [ ] Get user confirmation before proceeding
+- [ ] Document security check in prompts.md
+
+---
+
+## Where This File is Stored
+
+**Location:** `c:\Users\Xcen3\Desktop\AI\AIFirstExam\customSettings.md`
+
+This file should be:
+- Version controlled in Git
+- Referenced in README.md
+- Reviewed before any dependency installation
+- Updated when new security guidelines are established
+
+---
+
+## User Authority
+
+The user (Ventsi) has the authority to:
+- Reject any installation for security concerns
+- Add additional security rules to this document
+- Require additional checks beyond those listed here
+- Override AI recommendations if better security practices are known
+
+**Remember:** Security is not negotiable. When in doubt, don't install. Ask the user first.
+
+---
+
+_This document was created in response to user security concerns about Chart.js CVE-2020-7746 and serves as a permanent guideline for this project and future AI-assisted development._
