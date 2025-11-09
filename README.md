@@ -213,7 +213,15 @@ This project implements security best practices:
   - 20 functional requirements + 18 non-functional requirements
   - UX principles, project specifications, and executive summary
   - Created retrospectively using BMAD PRD workflow for educational purposes
-- **[prompts.md](prompts.md)** - Chronological record of all AI interactions (29 prompts)
+- **[docs/architecture.md](docs/architecture.md)** - **Complete Architecture Document**
+  - Comprehensive technical architecture (~13,000 words)
+  - Technology stack decisions with versions and rationale
+  - Project structure, data models, and API contracts
+  - Security, performance, and deployment architecture
+  - 8 Architecture Decision Records (ADRs) explaining key choices
+  - Implementation patterns and consistency rules for AI agents
+  - Created retrospectively using BMAD Architecture workflow
+- **[prompts.md](prompts.md)** - Chronological record of all AI interactions (31 prompts)
 - **[summary.md](summary.md)** - Project summary and AI usage analysis
 - **[customSettings.md](customSettings.md)** - AI security guidelines and rules
 - **[docs/product-brief-*.md](docs/)** - Initial product requirements and vision
