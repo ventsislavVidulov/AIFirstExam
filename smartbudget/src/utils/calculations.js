@@ -4,23 +4,51 @@
 import { TRANSACTION_TYPES } from './constants';
 
 /**
+ * Calculate total income from transactions
+ * @param {Array} transactions - Array of transaction objects
+ * @returns {number} Total income amount
+ */
+export const calculateTotalIncome = (transactions) => {
+  return transactions
+    .filter(t => t.type === TRANSACTION_TYPES.INCOME)
+    .reduce((sum, t) => sum + parseFloat(t.amount), 0);
+};
+
+/**
+ * Calculate total expenses from transactions
+ * @param {Array} transactions - Array of transaction objects
+ * @returns {number} Total expense amount
+ */
+export const calculateTotalExpenses = (transactions) => {
+  return transactions
+    .filter(t => t.type === TRANSACTION_TYPES.EXPENSE)
+    .reduce((sum, t) => sum + parseFloat(t.amount), 0);
+};
+
+/**
+ * Calculate balance from income and expenses
+ * @param {number} income - Total income amount
+ * @param {number} expenses - Total expense amount
+ * @returns {number} Balance (income - expenses)
+ */
+export const calculateBalance = (income, expenses) => {
+  return income - expenses;
+};
+
+/**
  * Calculate financial summary from transactions
  * @param {Array} transactions - Array of transaction objects
  * @returns {Object} Summary with totalIncome, totalExpenses, balance
+ * @deprecated Use calculateTotalIncome, calculateTotalExpenses, and calculateBalance instead
  */
 export const calculateSummary = (transactions) => {
-  const income = transactions
-    .filter(t => t.type === TRANSACTION_TYPES.INCOME)
-    .reduce((sum, t) => sum + parseFloat(t.amount), 0);
-
-  const expenses = transactions
-    .filter(t => t.type === TRANSACTION_TYPES.EXPENSE)
-    .reduce((sum, t) => sum + parseFloat(t.amount), 0);
+  const income = calculateTotalIncome(transactions);
+  const expenses = calculateTotalExpenses(transactions);
 
   return {
     totalIncome: income,
     totalExpenses: expenses,
-    balance: income - expenses
+    balance: calculateBalance(income, expenses)
   };
 };
 

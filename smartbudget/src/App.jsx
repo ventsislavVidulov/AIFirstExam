@@ -7,6 +7,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import { BudgetProvider } from './context/BudgetContext';
 import Summary from './components/Summary';
+import FilterControls from './components/FilterControls';
 import TransactionForm from './components/TransactionForm';
 import TransactionList from './components/TransactionList';
 import Charts from './components/Charts';
@@ -65,6 +66,9 @@ function App() {
           <Box sx={{ mb: 4 }}>
             <Summary />
           </Box>
+
+          {/* Filter Controls */}
+          <FilterControls />
 
           {/* Transaction Form and List */}
           <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 3, mb: 4 }}>

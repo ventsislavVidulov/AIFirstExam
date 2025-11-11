@@ -14,7 +14,7 @@ import {
   Title
 } from 'chart.js';
 import { useBudget } from '../context/BudgetContext';
-import { getCategoryBreakdown } from '../utils/calculations';
+import { getCategoryBreakdown, calculateTotalIncome, calculateTotalExpenses } from '../utils/calculations';
 import { COLORS } from '../utils/constants';
 
 // Register Chart.js components
@@ -29,8 +29,8 @@ ChartJS.register(
 );
 
 const Charts = () => {
-  const { allTransactions } = useBudget();
-  const categoryBreakdown = getCategoryBreakdown(allTransactions);
+  const { transactions } = useBudget();
+  const categoryBreakdown = getCategoryBreakdown(transactions);
 
   // Prepare data for pie chart
   const pieChartData = {
@@ -61,13 +61,8 @@ const Charts = () => {
   };
 
   // Prepare data for bar chart (Income vs Expenses)
-  const income = allTransactions
-    .filter(t => t.type === 'income')
-    .reduce((sum, t) => sum + t.amount, 0);
-
-  const expenses = allTransactions
-    .filter(t => t.type === 'expense')
-    .reduce((sum, t) => sum + t.amount, 0);
+  const income = calculateTotalIncome(transactions);
+  const expenses = calculateTotalExpenses(transactions);
 
   const barChartData = {
     labels: ['Income', 'Expenses'],
@@ -108,7 +103,7 @@ const Charts = () => {
 
   // Check if there's data to display
   const hasExpenses = Object.keys(categoryBreakdown).length > 0;
-  const hasTransactions = allTransactions.length > 0;
+  const hasTransactions = transactions.length > 0;
 
   if (!hasTransactions) {
     return (

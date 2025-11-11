@@ -1,0 +1,74 @@
+# generated: 2025-11-11
+# project: AIFirstExam
+# project_key: AIFirstExam
+# tracking_system: file-system
+# story_location: {project-root}/docs/stories
+
+# STATUS DEFINITIONS:
+# ==================
+# Epic Status:
+#   - backlog: Epic exists in epic file but not contexted
+#   - contexted: Epic tech context created (required before drafting stories)
+#
+# Story Status:
+#   - backlog: Story only exists in epic file
+#   - drafted: Story file created in stories folder
+#   - ready-for-dev: Draft approved and story context created
+#   - in-progress: Developer actively working on implementation
+#   - review: Under SM review (via code-review workflow)
+#   - done: Story completed
+#
+# Retrospective Status:
+#   - optional: Can be completed but not required
+#   - completed: Retrospective has been done
+#
+# WORKFLOW NOTES:
+# ===============
+# - Epics should be 'contexted' before stories can be 'drafted'
+# - Stories can be worked in parallel if team capacity allows
+# - SM typically drafts next story after previous one is 'done' to incorporate learnings
+# - Dev moves story to 'review', SM reviews, then Dev moves to 'done'
+
+generated: 2025-11-11
+project: AIFirstExam
+project_key: AIFirstExam
+tracking_system: file-system
+story_location: "{project-root}/docs/stories"
+
+development_status:
+  # Epic 1: Project Foundation & Development Infrastructure
+  epic-1: backlog
+  1-1-initialize-vite-react-development-environment: done
+  1-2-integrate-material-ui-component-library: done
+  1-3-establish-project-structure-and-application-shell: done
+  epic-1-retrospective: optional
+
+  # Epic 2: Transaction Management System
+  epic-2: backlog
+  2-1-create-transaction-data-model-and-utility-functions: done
+  2-2-implement-budgetcontext-for-global-state-management: in-progress
+  2-3-build-transaction-form-component: in-progress
+  2-4-build-transaction-list-component: in-progress
+  2-5-integrate-transaction-form-and-list-into-app: done
+  epic-2-retrospective: optional
+
+  # Epic 3: Financial Intelligence & Summaries
+  epic-3: backlog
+  3-1-create-summary-component-with-real-time-calculations: in-progress
+  3-2-integrate-summary-cards-into-main-application-layout: done
+  epic-3-retrospective: optional
+
+  # Epic 4: Data Visualization & Analytics
+  epic-4: backlog
+  4-1-integrate-chartjs-and-create-charts-component-structure: in-progress
+  4-2-implement-expense-breakdown-pie-chart: in-progress
+  4-3-implement-income-vs-expenses-bar-chart: in-progress
+  4-4-integrate-charts-into-application-layout: done
+  epic-4-retrospective: optional
+
+  # Epic 5: Filtering & User Experience Polish
+  epic-5: backlog
+  5-1-implement-date-range-and-type-filters: done
+  5-2-add-clear-filters-button-and-active-filter-indicators: backlog
+  5-3-responsive-design-testing-and-mobile-optimization: in-progress
+  epic-5-retrospective: optional

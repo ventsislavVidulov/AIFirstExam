@@ -6,12 +6,14 @@ import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import TrendingDownIcon from '@mui/icons-material/TrendingDown';
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import { useBudget } from '../context/BudgetContext';
-import { calculateSummary } from '../utils/calculations';
+import { calculateTotalIncome, calculateTotalExpenses, calculateBalance } from '../utils/calculations';
 import { COLORS } from '../utils/constants';
 
 const Summary = () => {
-  const { allTransactions } = useBudget();
-  const summary = calculateSummary(allTransactions);
+  const { transactions } = useBudget();
+  const totalIncome = calculateTotalIncome(transactions);
+  const totalExpenses = calculateTotalExpenses(transactions);
+  const balance = calculateBalance(totalIncome, totalExpenses);
 
   const formatCurrency = (amount) => {
     return new Intl.NumberFormat('en-US', {
@@ -23,24 +25,24 @@ const Summary = () => {
   const summaryCards = [
     {
       title: 'Total Income',
-      amount: summary.totalIncome,
+      amount: totalIncome,
       icon: <TrendingUpIcon sx={{ fontSize: 40 }} />,
       color: COLORS.income,
       bgColor: '#E8F5E9'
     },
     {
       title: 'Total Expenses',
-      amount: summary.totalExpenses,
+      amount: totalExpenses,
       icon: <TrendingDownIcon sx={{ fontSize: 40 }} />,
       color: COLORS.expense,
       bgColor: '#FFEBEE'
     },
     {
       title: 'Balance',
-      amount: summary.balance,
+      amount: balance,
       icon: <AccountBalanceWalletIcon sx={{ fontSize: 40 }} />,
-      color: summary.balance >= 0 ? COLORS.income : COLORS.expense,
-      bgColor: summary.balance >= 0 ? '#E3F2FD' : '#FFF3E0'
+      color: balance >= 0 ? COLORS.income : COLORS.expense,
+      bgColor: balance >= 0 ? '#E3F2FD' : '#FFF3E0'
     }
   ];
 

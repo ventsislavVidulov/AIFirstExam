@@ -7,7 +7,11 @@
       "Bash(echo:*)",
       "Bash(if not exist \"c:\\Users\\Xcen3\\Desktop\\AI\\AIFirstExam\\docs\\PRD\" mkdir \"c:\\Users\\Xcen3\\Desktop\\AI\\AIFirstExam\\docs\\PRD\")",
       "SlashCommand(/bmad:bmm:agents:architect)",
-      "Bash(test:*)"
+      "Bash(test:*)",
+      "SlashCommand(/bmad:bmm:workflows:create-epics-and-stories)",
+      "SlashCommand(/bmad:bmm:workflows:sprint-planning)",
+      "SlashCommand(/bmad:bmm:agents:sm)",
+      "Bash(npm audit:*)"
     ],
     "deny": [],
     "ask": []

@@ -10,11 +10,22 @@ export const TRANSACTION_TYPES = {
 };
 
 /**
+ * Income category definitions
+ */
+export const INCOME_CATEGORIES = ['Salary', 'Freelance', 'Investment', 'Gift', 'Other'];
+
+/**
+ * Expense category definitions
+ */
+export const EXPENSE_CATEGORIES = ['Rent', 'Transport', 'Food', 'Entertainment', 'Utilities', 'Healthcare', 'Shopping', 'Other'];
+
+/**
  * Category definitions by transaction type
+ * @deprecated Use INCOME_CATEGORIES and EXPENSE_CATEGORIES instead
  */
 export const CATEGORIES = {
-  income: ['Salary', 'Freelance', 'Investment', 'Gift', 'Other'],
-  expense: ['Rent', 'Transport', 'Food', 'Entertainment', 'Utilities', 'Healthcare', 'Shopping', 'Other']
+  income: INCOME_CATEGORIES,
+  expense: EXPENSE_CATEGORIES
 };
 
 /**
