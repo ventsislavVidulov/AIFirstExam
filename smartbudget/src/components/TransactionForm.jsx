@@ -65,10 +65,23 @@ const TransactionForm = () => {
 
     if (!formData.date) {
       newErrors.date = 'Date is required';
+    } else if (new Date(formData.date) > new Date()) {
+      newErrors.date = 'Date cannot be in the future';
     }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
+  };
+
+  // Check if form is valid (for disabling submit button)
+  const isFormValid = () => {
+    return (
+      formData.amount &&
+      parseFloat(formData.amount) > 0 &&
+      formData.category &&
+      formData.date &&
+      new Date(formData.date) <= new Date()
+    );
   };
 
   // Handle form submission
@@ -170,6 +183,7 @@ const TransactionForm = () => {
             error={!!errors.date}
             helperText={errors.date}
             InputLabelProps={{ shrink: true }}
+            inputProps={{ max: format(new Date(), 'yyyy-MM-dd') }}
             sx={{ mb: 2 }}
             required
           />
@@ -182,6 +196,8 @@ const TransactionForm = () => {
             onChange={(e) => handleChange('description', e.target.value)}
             multiline
             rows={2}
+            inputProps={{ maxLength: 200 }}
+            helperText={`${formData.description.length}/200 characters`}
             sx={{ mb: 2 }}
           />
 
@@ -192,6 +208,7 @@ const TransactionForm = () => {
             fullWidth
             size="large"
             color={formData.type === TRANSACTION_TYPES.INCOME ? 'success' : 'error'}
+            disabled={!isFormValid()}
           >
             Add {formData.type === TRANSACTION_TYPES.INCOME ? 'Income' : 'Expense'}
           </Button>

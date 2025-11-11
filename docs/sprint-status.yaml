@@ -47,8 +47,8 @@ development_status:
   epic-2: backlog
   2-1-create-transaction-data-model-and-utility-functions: done
   2-2-implement-budgetcontext-for-global-state-management: in-progress
-  2-3-build-transaction-form-component: in-progress
-  2-4-build-transaction-list-component: in-progress
+  2-3-build-transaction-form-component: done
+  2-4-build-transaction-list-component: done
   2-5-integrate-transaction-form-and-list-into-app: done
   epic-2-retrospective: optional
 
@@ -69,6 +69,6 @@ development_status:
   # Epic 5: Filtering & User Experience Polish
   epic-5: backlog
   5-1-implement-date-range-and-type-filters: done
-  5-2-add-clear-filters-button-and-active-filter-indicators: backlog
+  5-2-add-clear-filters-button-and-active-filter-indicators: done
   5-3-responsive-design-testing-and-mobile-optimization: in-progress
   epic-5-retrospective: optional
