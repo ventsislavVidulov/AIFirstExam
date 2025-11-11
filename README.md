@@ -61,6 +61,9 @@ AIFirstExam/
 ├── bmad/                      # BMAD methodology files
 ├── docs/                      # Project documentation
 │   ├── PRD/                   # Product Requirements Document (9 files)
+│   ├── epics/                 # Epic breakdown (sharded story structure)
+│   ├── epics.md               # Complete epic breakdown (monolithic)
+│   ├── architecture.md        # Architecture document with 8 ADRs
 │   └── product-brief-*.md     # Product Brief document
 ├── smartbudget/               # React application
 │   ├── src/
@@ -221,7 +224,17 @@ This project implements security best practices:
   - 8 Architecture Decision Records (ADRs) explaining key choices
   - Implementation patterns and consistency rules for AI agents
   - Created retrospectively using BMAD Architecture workflow
-- **[prompts.md](prompts.md)** - Chronological record of all AI interactions (31 prompts)
+- **[docs/epics/](docs/epics/)** - **Epic Breakdown & Story Structure**
+  - 5 epics decomposed into 17 implementable stories (~63 story points)
+  - Available in two formats: [Monolithic](docs/epics.md) (94KB) and [Sharded](docs/epics/) (4KB per story)
+  - **Token efficiency:** 95% reduction in context usage for AI dev agents
+  - BDD acceptance criteria (Given/When/Then) throughout
+  - Sequential dependencies with clear prerequisite chains
+  - Value-based organization (not technical layers)
+  - [Master index](docs/epics/index.md) with navigation hub
+  - [README](docs/epics/README.md) explains sharding benefits for AI workflows
+  - Created using BMAD Create-Epics-and-Stories workflow
+- **[prompts.md](prompts.md)** - Chronological record of all AI interactions (36 prompts)
 - **[summary.md](summary.md)** - Project summary and AI usage analysis
 - **[customSettings.md](customSettings.md)** - AI security guidelines and rules
 - **[docs/product-brief-*.md](docs/)** - Initial product requirements and vision
