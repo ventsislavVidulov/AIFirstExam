@@ -20,7 +20,9 @@ import {
   DialogContent,
   DialogContentText,
   DialogActions,
-  Button
+  Button,
+  useMediaQuery,
+  useTheme
 } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -31,9 +33,15 @@ import { format } from 'date-fns';
 
 const TransactionList = () => {
   const { transactions, deleteTransaction } = useBudget();
+  const theme = useTheme();
+  const isDesktop = useMediaQuery(theme.breakpoints.up('lg')); // lg breakpoint = 1200px
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm')); // sm breakpoint = 600px
+
   const [expandedRows, setExpandedRows] = useState(new Set());
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const [transactionToDelete, setTransactionToDelete] = useState(null);
+  const [descriptionDialogOpen, setDescriptionDialogOpen] = useState(false);
+  const [selectedDescription, setSelectedDescription] = useState('');
 
   const toggleRowExpansion = (id) => {
     const newExpandedRows = new Set(expandedRows);
@@ -45,10 +53,46 @@ const TransactionList = () => {
     setExpandedRows(newExpandedRows);
   };
 
+  const handleDescriptionClick = (description) => {
+    setSelectedDescription(description);
+    setDescriptionDialogOpen(true);
+  };
+
+  const handleDescriptionDialogClose = () => {
+    setDescriptionDialogOpen(false);
+    setSelectedDescription('');
+  };
+
   const truncateDescription = (description, id) => {
     if (!description) return '-';
     if (description.length <= 30) return description;
 
+    // On mobile/tablet (<1024px): Show "Expand description" that opens modal
+    if (!isDesktop) {
+      return (
+        <Link
+          component="button"
+          variant="body2"
+          onClick={() => handleDescriptionClick(description)}
+          sx={{
+            cursor: 'pointer',
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: 0.5,
+            color: 'primary.main',
+            textDecoration: 'none',
+            '&:hover': {
+              textDecoration: 'underline'
+            }
+          }}
+        >
+          <ExpandMoreIcon fontSize="small" />
+          Expand description
+        </Link>
+      );
+    }
+
+    // On desktop (≥1024px): Show expandable text in same cell
     const isExpanded = expandedRows.has(id);
 
     return (
@@ -114,6 +158,10 @@ const TransactionList = () => {
   };
 
   const formatDate = (dateString) => {
+    // Shorter format on mobile to save space
+    if (isMobile) {
+      return format(new Date(dateString), 'MMM dd');
+    }
     return format(new Date(dateString), 'MMM dd, yyyy');
   };
 
@@ -143,14 +191,14 @@ const TransactionList = () => {
         </Typography>
 
         <TableContainer sx={{ mt: 2 }}>
-          <Table>
+          <Table size={isMobile ? 'small' : 'medium'}>
             <TableHead>
               <TableRow>
-                <TableCell>Date</TableCell>
-                <TableCell>Description</TableCell>
-                <TableCell>Category</TableCell>
+                <TableCell sx={{ width: isMobile ? '60px' : '120px' }}>Date</TableCell>
+                <TableCell>Desc.</TableCell>
+                {!isMobile && <TableCell>Category</TableCell>}
                 <TableCell align="right">Amount</TableCell>
-                <TableCell align="center">Actions</TableCell>
+                <TableCell align="center" sx={{ width: '50px' }}></TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -159,11 +207,29 @@ const TransactionList = () => {
                   key={transaction.id}
                   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                 >
-                  <TableCell sx={{ verticalAlign: 'top', width: '120px' }}>{formatDate(transaction.date)}</TableCell>
-                  <TableCell sx={{ verticalAlign: 'top', maxWidth: '250px', width: '250px' }}>
+                  <TableCell
+                    sx={{
+                      verticalAlign: 'top',
+                      width: isMobile ? '60px' : '120px',
+                      fontSize: isMobile ? '0.75rem' : 'inherit'
+                    }}
+                  >
+                    {formatDate(transaction.date)}
+                  </TableCell>
+                  <TableCell
+                    sx={{
+                      verticalAlign: 'top',
+                      maxWidth: isMobile ? '150px' : '250px',
+                      fontSize: isMobile ? '0.875rem' : 'inherit'
+                    }}
+                  >
                     {truncateDescription(transaction.description, transaction.id)}
                   </TableCell>
-                  <TableCell sx={{ verticalAlign: 'top', width: '140px' }}>{transaction.category}</TableCell>
+                  {!isMobile && (
+                    <TableCell sx={{ verticalAlign: 'top', width: '140px' }}>
+                      {transaction.category}
+                    </TableCell>
+                  )}
                   <TableCell
                     align="right"
                     sx={{
@@ -171,13 +237,15 @@ const TransactionList = () => {
                       color: transaction.type === TRANSACTION_TYPES.INCOME
                         ? COLORS.income
                         : COLORS.expense,
-                      verticalAlign: 'top'
+                      verticalAlign: 'top',
+                      fontSize: isMobile ? '0.875rem' : 'inherit',
+                      whiteSpace: 'nowrap'
                     }}
                   >
                     {transaction.type === TRANSACTION_TYPES.INCOME ? '+' : '-'}
                     {formatCurrency(transaction.amount)}
                   </TableCell>
-                  <TableCell align="center" sx={{ verticalAlign: 'top' }}>
+                  <TableCell align="center" sx={{ verticalAlign: 'top', width: '50px' }}>
                     <IconButton
                       size="small"
                       color="error"
@@ -195,6 +263,7 @@ const TransactionList = () => {
       </CardContent>
     </Card>
 
+    {/* Delete Confirmation Dialog */}
     <Dialog
       open={deleteDialogOpen}
       onClose={handleDeleteCancel}
@@ -215,6 +284,29 @@ const TransactionList = () => {
         </Button>
         <Button onClick={handleDeleteConfirm} color="error" variant="contained" autoFocus>
           Delete
+        </Button>
+      </DialogActions>
+    </Dialog>
+
+    {/* Description Modal (Mobile/Tablet <1024px) */}
+    <Dialog
+      open={descriptionDialogOpen}
+      onClose={handleDescriptionDialogClose}
+      aria-labelledby="description-dialog-title"
+      maxWidth="sm"
+      fullWidth
+    >
+      <DialogTitle id="description-dialog-title">
+        Transaction Description
+      </DialogTitle>
+      <DialogContent>
+        <Typography variant="body1" sx={{ wordBreak: 'break-word', whiteSpace: 'pre-wrap', pt: 1 }}>
+          {selectedDescription}
+        </Typography>
+      </DialogContent>
+      <DialogActions>
+        <Button onClick={handleDescriptionDialogClose} color="primary" variant="contained">
+          Close
         </Button>
       </DialogActions>
     </Dialog>
