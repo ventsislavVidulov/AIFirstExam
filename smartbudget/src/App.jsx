@@ -60,14 +60,16 @@ function App() {
           </Toolbar>
         </AppBar>
 
-        {/* Main Content */}
+        {/* Main Content - Centered */}
         <Container
           maxWidth="lg"
           sx={{
             mt: 4,
             mb: 4,
             px: { xs: 2, sm: 3 },
-            mx: 'auto'  // Explicitly center the container
+            mx: 'auto',
+            width: '100%',
+            maxWidth: { xs: '100%', sm: '600px', md: '900px', lg: '1200px' }
           }}
         >
           {/* Summary Cards */}
