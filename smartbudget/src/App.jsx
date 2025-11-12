@@ -61,7 +61,15 @@ function App() {
         </AppBar>
 
         {/* Main Content */}
-        <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+        <Container
+          maxWidth="lg"
+          sx={{
+            mt: 4,
+            mb: 4,
+            px: { xs: 2, sm: 3 },
+            mx: 'auto'  // Explicitly center the container
+          }}
+        >
           {/* Summary Cards */}
           <Box sx={{ mb: 4 }}>
             <Summary />

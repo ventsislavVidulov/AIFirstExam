@@ -1,9 +1,10 @@
 // BudgetContext - Global state management for SmartBudget application
 // Provides transaction data and CRUD operations to all components
 
-import { createContext, useContext, useState, useEffect } from 'react';
-import { loadTransactions, saveTransactions } from '../utils/storage';
+import { createContext, useContext, useState } from 'react';
+import { useLocalStorage } from '@uidotdev/usehooks';
 import { filterTransactions, sortTransactionsByDate } from '../utils/calculations';
+import { STORAGE_KEY } from '../utils/constants';
 
 /**
  * Simple ID generator using timestamp and random number
@@ -32,27 +33,14 @@ export const useBudget = () => {
  * Wraps the application and provides budget state and methods
  */
 export const BudgetProvider = ({ children }) => {
-  // State
-  const [transactions, setTransactions] = useState([]);
+  // State with automatic localStorage persistence
+  const [transactions, setTransactions] = useLocalStorage(STORAGE_KEY, []);
   const [filters, setFilters] = useState({
     startDate: null,
     endDate: null,
     category: 'all',
     type: 'all'
   });
-
-  // Load transactions from localStorage on mount
-  useEffect(() => {
-    const loadedTransactions = loadTransactions();
-    setTransactions(loadedTransactions);
-  }, []);
-
-  // Save transactions to localStorage whenever they change
-  useEffect(() => {
-    if (transactions.length >= 0) {
-      saveTransactions(transactions);
-    }
-  }, [transactions]);
 
   /**
    * Add a new transaction
