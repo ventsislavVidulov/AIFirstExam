@@ -153,6 +153,35 @@ The AI assistant MUST automatically save ALL user interactions and AI responses 
 
 ---
 
+## React Development Best Practices
+
+### Rule 5: Follow Official React Guidelines for Effects
+
+**IMPORTANT RESOURCE:**
+
+📚 **You Might Not Need an Effect**
+- **URL:** https://react.dev/learn/you-might-not-need-an-effect
+- **Purpose:** Official React documentation on when to use and NOT use useEffect
+- **Key Principles:**
+  - Avoid unnecessary Effects that make code slower and more fragile
+  - Use Effects only for synchronizing with external systems
+  - Prefer calculating values during rendering instead of Effects
+  - Use event handlers for user interactions, not Effects
+  - Reset state on prop changes without Effects when possible
+
+**When to Reference:**
+- Before adding any `useEffect` hook to components
+- When debugging performance issues or infinite loops
+- When refactoring component logic
+- During code reviews
+
+**Examples from SmartBudget:**
+- ✅ **Good:** Using useEffect in BudgetContext to sync with localStorage (external system)
+- ❌ **Avoid:** Using useEffect to update state based on other state (calculate during render instead)
+
+---
+
 _This document was created in response to user security concerns about Chart.js CVE-2020-7746 and serves as a permanent guideline for this project and future AI-assisted development._
 
 _Updated 2025-11-09: Added mandatory prompt documentation rule for academic evaluation requirements._
+_Updated 2025-11-12: Added React best practices for Effects usage._
