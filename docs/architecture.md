@@ -36,6 +36,7 @@ npm install
 npm install @mui/material @emotion/react @emotion/styled @mui/icons-material
 npm install chart.js react-chartjs-2
 npm install date-fns
+npm install @uidotdev/usehooks
 ```
 
 **Why This Stack:**
@@ -56,7 +57,7 @@ npm install date-fns
 | **Charts** | Chart.js | 4.5.1 | Secure (patched CVE), canvas performance, React wrapper |
 | **Date Library** | date-fns | 4.1.0 | Lightweight, functional, tree-shakeable |
 | **State Management** | React Context API | Built-in | Sufficient for app scope, no external dependency |
-| **Storage** | localStorage | Browser API | Client-side privacy, zero infrastructure |
+| **Storage** | localStorage + useLocalStorage hook | Browser API + @uidotdev/usehooks 2.4.1 | Client-side privacy, eliminates race conditions |
 | **Styling** | Emotion (MUI) | 11.14.0 | CSS-in-JS, dynamic theming, scoped styles |
 | **Icons** | MUI Icons | 7.3.5 | Consistent with MUI, Material Design icons |
 | **ID Generation** | Custom (timestamp + random) | N/A | Avoids uuid dependency, sufficient for local-only data |
@@ -78,8 +79,7 @@ smartbudget/
 │   │   └── BudgetContext.jsx  # Transaction state + CRUD operations
 │   ├── utils/                 # Pure utility functions
 │   │   ├── calculations.js    # Financial calculations, filtering, sorting
-│   │   ├── constants.js       # Categories, colors, storage keys
-│   │   └── storage.js         # localStorage read/write operations
+│   │   └── constants.js       # Categories, colors, storage keys
 │   ├── assets/                # Images, logos (minimal in MVP)
 │   ├── App.jsx                # Main component (theme, layout, provider)
 │   ├── main.jsx               # React DOM entry point
@@ -113,12 +113,12 @@ AIFirstExam/
 
 | MVP Feature | Components | Context/State | Utils | Storage |
 | ----------- | ---------- | ------------- | ----- | ------- |
-| **Transaction CRUD** | TransactionForm, TransactionList | BudgetContext (add, update, delete) | generateId() | saveTransactions() |
+| **Transaction CRUD** | TransactionForm, TransactionList | BudgetContext (add, update, delete) | generateId() | useLocalStorage hook (automatic) |
 | **Categorization** | TransactionForm (category dropdown) | N/A | CATEGORIES constant | Persisted in transaction object |
 | **Financial Summaries** | Summary (3 cards) | BudgetContext (allTransactions) | calculateSummary() | Derived from stored data |
 | **Data Visualization** | Charts (Pie + Bar) | BudgetContext (filtered transactions) | getCategoryBreakdown() | Derived from stored data |
-| **Filtering** | TransactionForm (filter controls) | BudgetContext (filters state) | filterTransactions() | Filters not persisted (session only) |
-| **Data Persistence** | All components (automatic) | BudgetContext (useEffect hooks) | N/A | loadTransactions(), saveTransactions() |
+| **Filtering** | FilterControls | BudgetContext (filters state) | filterTransactions() | Filters not persisted (session only) |
+| **Data Persistence** | All components (automatic) | BudgetContext (useLocalStorage hook) | N/A | @uidotdev/usehooks handles sync |
 
 ---
 
@@ -195,15 +195,16 @@ AIFirstExam/
 - Automatic re-renders on state changes
 
 **Components → Utils:**
-- Direct function imports (calculations, storage, constants)
+- Direct function imports (calculations, constants)
 - Pure functions, no side effects
 - Enables easy testing (if tests added later)
 
 **Context → localStorage:**
-- `useEffect` hooks automatically sync state to storage
-- On mount: Load from localStorage
-- On transaction change: Save to localStorage
-- Error handling: Try-catch with console logging
+- `useLocalStorage` hook (from @uidotdev/usehooks) automatically syncs state
+- Handles both loading on mount and saving on changes
+- Eliminates race conditions between load and save operations
+- Error handling: Built into hook with try-catch and console logging
+- Follows React best practices (avoids unnecessary useEffect)
 
 **Charts → Data:**
 - Chart.js receives data from calculated summaries
