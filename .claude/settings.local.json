@@ -11,7 +11,16 @@
       "SlashCommand(/bmad:bmm:workflows:create-epics-and-stories)",
       "SlashCommand(/bmad:bmm:workflows:sprint-planning)",
       "SlashCommand(/bmad:bmm:agents:sm)",
-      "Bash(npm audit:*)"
+      "Bash(npm audit:*)",
+      "Bash(findstr:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(npm run build:*)",
+      "Bash(npm view:*)",
+      "Bash(npm install:*)",
+      "Bash(git checkout:*)",
+      "Bash(git rm:*)",
+      "Bash(npm test:*)"
     ],
     "deny": [],
     "ask": []
