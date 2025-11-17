@@ -2,7 +2,7 @@
 
 A web-based personal finance management application built using the BMAD (Breakthrough Method for Agile Development) methodology with AI-assisted development.
 
-## Workflow Brief By User
+## Workflow Brief By Developer
 
 After the bmad's BA created BMAD.md, I told to Claude, that I am "poor" on tokens and he (Claude) suggested to directly implement the project from BMAD.md, he convince me that creating PRD, architecture and so on workflow is not important in my case (line 214 from prompts.md), so I choose to directly implement the product. Then I decided to put the completed product trough bmad agents to see what will happen, anyway i have tokens left. Bmad PM created PRD in the corresponding folder, then Bmad Architect created architecture.md. Then Bmad SM created epics and stories and done story-by-story validation against BDD. In this process I pointed some visual modifications, also that transactions didn't persist 
 between refresh, which were fixed. Then prompted /bmad:bmm:workflows:code-review, which made code review and write tests. Then I run the test which all passe3d
